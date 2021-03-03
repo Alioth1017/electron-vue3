@@ -11,6 +11,7 @@ export default (env = 'production') => {
         incremental: true,
         platform: "node",
         sourcemap: env === 'development',
+        tsconfig:resolve('./src/main/tsconfig.json')
     };
     return config;
 };

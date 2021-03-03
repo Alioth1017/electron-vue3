@@ -8,7 +8,6 @@
     "allowJs": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "jsx": "preserve",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },

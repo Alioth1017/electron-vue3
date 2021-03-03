@@ -20,8 +20,9 @@
     }
   },
   "include": [
-    "src/**/*.vue",
-    "src/**/*.ts",
+    "src/**/*"
+  ],
+  "exclude": [
     "src/*.d.ts"
   ]
 }
