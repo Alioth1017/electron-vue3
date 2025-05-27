@@ -1,15 +1,14 @@
 const compile = require('./compile');
 const external = require('./external');
 const napiRsCode = require('./napi_rs_code');
-const { spawn } = require('node:child_process');
+const { exec } = require('node:child_process');
 const { readFileSync, writeFileSync, unlinkSync, renameSync } = require('node:fs');
 const { Arch } = require('electron-builder');
 const path = require('node:path');
 
 const loadInit = () => {
   return new Promise((resolve) => {
-    const loadProcess = spawn('npm', ['install'], {
-      shell: true,
+    const loadProcess = exec('npm install', {
       cwd: path.resolve('scripts/plugins/bytecode/load')
     });
     loadProcess.stdout.on('data', (data) => {
@@ -60,8 +59,7 @@ const loadBuild = (electronPlatformName, arch) => {
         break;
     }
     opts.push('--release');
-    const loadProcess = spawn('npx', opts, {
-      shell: true,
+    const loadProcess = exec(opts.join(' '), {
       cwd: path.resolve('scripts/plugins/bytecode/load')
     });
     loadProcess.stdout.on('data', (data) => {
